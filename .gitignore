@@ -7,9 +7,9 @@ npm-debug.log
 .netlify
 /dist
 /coverage
-/.gradle
+gradle
 /.vscode
-/.circleci
-/.github
+circleci
+github
 report.html
  
