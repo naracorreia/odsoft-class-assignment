@@ -1,0 +1,211 @@
+{
+	"all": [
+		{
+			"origin": "@types/express",
+			"fullDep": "@types/express@4.17.1"
+		},
+		{
+			"origin": "@types/jest",
+			"fullDep": "@types/jest@24.0.18"
+		},
+		{
+			"origin": "@types/lodash",
+			"fullDep": "@types/lodash@4.14.141"
+		},
+		{
+			"origin": "@types/node",
+			"fullDep": "@types/node@12.7.8"
+		},
+		{
+			"origin": "apollo-server-express",
+			"fullDep": "apollo-server-express@2.11.0"
+		},
+		{
+			"origin": "axios",
+			"fullDep": "axios@0.21.2"
+		},
+		{
+			"origin": "bcrypt-nodejs",
+			"fullDep": "bcrypt-nodejs@0.0.3"
+		},
+		{
+			"origin": "body-parser",
+			"fullDep": "body-parser@1.19.0"
+		},
+		{
+			"origin": "compression",
+			"fullDep": "compression@1.7.4"
+		},
+		{
+			"origin": "cors",
+			"fullDep": "cors@2.8.5"
+		},
+		{
+			"origin": "cross-env",
+			"fullDep": "cross-env@6.0.3"
+		},
+		{
+			"origin": "dompurify",
+			"fullDep": "dompurify@2.0.6"
+		},
+		{
+			"origin": "dotenv",
+			"fullDep": "dotenv@8.1.0"
+		},
+		{
+			"origin": "express",
+			"fullDep": "express@4.17.1"
+		},
+		{
+			"origin": "express-rate-limit",
+			"fullDep": "express-rate-limit@5.0.0"
+		},
+		{
+			"origin": "graphql-iso-date",
+			"fullDep": "graphql-iso-date@3.6.1"
+		},
+		{
+			"origin": "helmet",
+			"fullDep": "helmet@3.21.1"
+		},
+		{
+			"origin": "jest",
+			"fullDep": "jest@24.9.0"
+		},
+		{
+			"origin": "jsdom",
+			"fullDep": "jsdom@15.1.1"
+		},
+		{
+			"origin": "jsonwebtoken",
+			"fullDep": "jsonwebtoken@8.5.1"
+		},
+		{
+			"origin": "lodash",
+			"fullDep": "lodash@4.17.15"
+		},
+		{
+			"origin": "morgan",
+			"fullDep": "morgan@1.9.1"
+		},
+		{
+			"origin": "mysql",
+			"fullDep": "mysql@2.17.1"
+		},
+		{
+			"origin": "mysql2",
+			"fullDep": "mysql2@1.7.0"
+		},
+		{
+			"origin": "nodemon",
+			"fullDep": "nodemon@1.19.3"
+		},
+		{
+			"origin": "rand-token",
+			"fullDep": "rand-token@0.4.0"
+		},
+		{
+			"origin": "react-quill",
+			"fullDep": "react-quill@1.3.3"
+		},
+		{
+			"origin": "redis",
+			"fullDep": "redis@2.8.0"
+		},
+		{
+			"origin": "rimraf",
+			"fullDep": "rimraf@3.0.0"
+		},
+		{
+			"origin": "sass",
+			"fullDep": null
+		},
+		{
+			"origin": "sequelize",
+			"fullDep": "sequelize@5.19.2"
+		},
+		{
+			"origin": "sequelize-cli",
+			"fullDep": "sequelize-cli@5.5.1"
+		},
+		{
+			"origin": "sinon",
+			"fullDep": "sinon@7.5.0"
+		},
+		{
+			"origin": "sinon-chai",
+			"fullDep": "sinon-chai@3.3.0"
+		},
+		{
+			"origin": "slug",
+			"fullDep": "slug@1.1.0"
+		},
+		{
+			"origin": "ts-jest",
+			"fullDep": "ts-jest@24.1.0"
+		},
+		{
+			"origin": "ts-node",
+			"fullDep": "ts-node@8.4.1"
+		},
+		{
+			"origin": "tslog",
+			"fullDep": "tslog@3.2.2"
+		},
+		{
+			"origin": "typescript",
+			"fullDep": "typescript@3.6.3"
+		},
+		{
+			"origin": "validator",
+			"fullDep": "validator@11.1.0"
+		},
+		{
+			"origin": "yaml",
+			"fullDep": "yaml@1.10.2"
+		}
+	],
+	"short": [
+		"@types/express@4.17.1",
+		"@types/jest@24.0.18",
+		"@types/lodash@4.14.141",
+		"@types/node@12.7.8",
+		"apollo-server-express@2.11.0",
+		"axios@0.21.2",
+		"bcrypt-nodejs@0.0.3",
+		"body-parser@1.19.0",
+		"compression@1.7.4",
+		"cors@2.8.5",
+		"cross-env@6.0.3",
+		"dompurify@2.0.6",
+		"dotenv@8.1.0",
+		"express@4.17.1",
+		"express-rate-limit@5.0.0",
+		"graphql-iso-date@3.6.1",
+		"helmet@3.21.1",
+		"jest@24.9.0",
+		"jsdom@15.1.1",
+		"jsonwebtoken@8.5.1",
+		"lodash@4.17.15",
+		"morgan@1.9.1",
+		"mysql@2.17.1",
+		"mysql2@1.7.0",
+		"nodemon@1.19.3",
+		"rand-token@0.4.0",
+		"react-quill@1.3.3",
+		"redis@2.8.0",
+		"rimraf@3.0.0",
+		null,
+		"sequelize@5.19.2",
+		"sequelize-cli@5.5.1",
+		"sinon@7.5.0",
+		"sinon-chai@3.3.0",
+		"slug@1.1.0",
+		"ts-jest@24.1.0",
+		"ts-node@8.4.1",
+		"tslog@3.2.2",
+		"typescript@3.6.3",
+		"validator@11.1.0",
+		"yaml@1.10.2"
+	]
+}
