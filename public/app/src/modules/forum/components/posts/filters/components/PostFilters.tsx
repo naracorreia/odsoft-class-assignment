@@ -1,6 +1,6 @@
+import "../styles/PostFilters.sass"
 
 import React from 'react';
-import "../styles/PostFilters.sass"
 
 export type PostFilterType = 'POPULAR' | 'NEW';
 
@@ -29,7 +29,7 @@ const PostFilters: React.FC<PostFilterProps> = (props) => (
     <Filter 
       activeFilter={props.activeFilter}
       filterType={'POPULAR'}
-      text="Popular"
+      text="Five Most Popular"
       onClick={props.onClick}
     />
     <Filter 

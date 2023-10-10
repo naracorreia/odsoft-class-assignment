@@ -1,8 +1,7 @@
-
 import * as actions from "./actions";
-import { Post } from "../models/Post";
-import { Comment } from "../models/Comment";
 
+import { Comment } from "../models/Comment";
+import { Post } from "../models/Post";
 
 export type ForumAction = { [key: string]: actions.ForumActionType | any };
 
@@ -124,6 +123,25 @@ function getPopularPostsFailure (error: string): ForumAction & { error: string }
   };
 }
 
+function getFiveMostPopularPosts (): ForumAction {
+  return {
+    type: actions.GETTING_FIVE_MOST_POPULAR_POSTS
+  };
+}
+
+function getFiveMostPopularPostsSuccess (posts: Post[]): ForumAction {
+  return {
+    type: actions.GETTING_FIVE_MOST_POPULAR_POSTS_SUCCESS,
+    posts
+  };
+}
+
+function getFiveMostPopularPostsFailure (error: string): ForumAction & { error: string } {
+  return {
+    type: actions.GETTING_FIVE_MOST_POPULAR_POSTS_FAILURE,
+    error
+  };
+}
 function gettingCommentByCommentId (): ForumAction {
   return {
     type: actions.GETTING_COMMENT_BY_COMMENT_ID
@@ -267,6 +285,10 @@ export {
   getPopularPosts,
   getPopularPostsSuccess,
   getPopularPostsFailure,
+
+  getFiveMostPopularPosts,
+  getFiveMostPopularPostsSuccess,
+  getFiveMostPopularPostsFailure,
 
   gettingCommentByCommentId,
   gettingCommentByCommentIdSuccess,

@@ -1,11 +1,11 @@
-
-import states, { ForumState } from "./states";
 import * as actions from "./actions";
 
-import { ReduxUtils } from "../../../shared/utils/ReduxUtils";
+import states, { ForumState } from "./states";
+
 import { ForumAction } from "./actionCreators";
 import { Post } from "../models/Post";
 import { PostUtil } from "../utils/PostUtil";
+import { ReduxUtils } from "../../../shared/utils/ReduxUtils";
 
 export default function forum (state: ForumState = states,
   action: ForumAction
@@ -125,6 +125,24 @@ export default function forum (state: ForumState = states,
         error: action.error
       };
 
+    case actions.GETTING_FIVE_MOST_POPULAR_POSTS:
+      return {
+        ...state,
+        ...ReduxUtils.reportEventStatus("isGettingFiveMostPopularPosts"),
+        error: ''
+      };
+    case actions.GETTING_FIVE_MOST_POPULAR_POSTS_SUCCESS:
+      return {
+        ...state,
+        ...ReduxUtils.reportEventStatus("isGettingFiveMostPopularPosts", true),
+        popularPosts: action.posts,
+      };
+    case actions.GETTING_FIVE_MOST_POPULAR_POSTS_FAILURE:
+      return {
+        ...state,
+        ...ReduxUtils.reportEventStatus("isGettingFiveMostPopularPosts", false),
+        error: action.error
+      };
 
     case actions.GETTING_COMMENT_BY_COMMENT_ID:
       return {

@@ -1,19 +1,19 @@
-
-import { submitPost } from "./submitPost";
 import { PostType } from "../../models/Post";
-import { getRecentPosts } from "./getRecentPosts";
-import { getPostBySlug } from "./getPostBySlug";
-import { createReplyToPost } from "./createReplyToPost";
-import { getComments } from "./getComments";
-import { getPopularPosts } from "./getPopularPosts";
-import { getCommentByCommentId } from "./getCommentByCommentId";
-import { creatingReplyToComment } from "../actionCreators";
-import { getCommentReplies } from "./getCommentReplies";
 import { createReplyToComment } from "./createReplyToComment"
-import { downvotePost } from "./downvotePost";
-import { upvotePost } from "./upvotePost";
-import { upvoteComment } from "./upvoteComment";
+import { createReplyToPost } from "./createReplyToPost";
+import { creatingReplyToComment } from "../actionCreators";
 import { downvoteComment } from "./downvoteComment";
+import { downvotePost } from "./downvotePost";
+import { getCommentByCommentId } from "./getCommentByCommentId";
+import { getCommentReplies } from "./getCommentReplies";
+import { getComments } from "./getComments";
+import { getFiveMostPopularPosts } from "./getFiveMostPopularPosts";
+import { getPopularPosts } from "./getPopularPosts";
+import { getPostBySlug } from "./getPostBySlug";
+import { getRecentPosts } from "./getRecentPosts";
+import { submitPost } from "./submitPost";
+import { upvoteComment } from "./upvoteComment";
+import { upvotePost } from "./upvotePost";
 
 export interface IForumOperations {
   submitPost: (title: string, type: PostType, text?: string, link?: string) => void;
@@ -22,6 +22,7 @@ export interface IForumOperations {
   createReplyToPost (text: string, slug: string): void;
   getComments (slug: string, offset?: number): void;
   getPopularPosts (offset?: number): void;
+  getFiveMostPopularPosts (limit?: number): void;
   getCommentByCommentId (commentId: string): void;
   createReplyToComment (comment: string, parentCommentId: string, slug: string): void;
   getCommentReplies (slug: string, commentId: string, offset?: number): void;
@@ -38,6 +39,7 @@ export {
   createReplyToPost,
   getComments,
   getPopularPosts,
+  getFiveMostPopularPosts,
   getCommentByCommentId,
   creatingReplyToComment,
   getCommentReplies,

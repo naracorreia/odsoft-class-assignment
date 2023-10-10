@@ -64,7 +64,8 @@ class IndexPage extends React.Component<IndexPageProps, IndexPageState> {
     if (activeFilter === 'NEW') {
       this.props.getRecentPosts();
     } else {
-      this.props.getPopularPosts();
+      //this.props.getPopularPosts();
+      this.props.getFiveMostPopularPosts(5);
     }
   }
 

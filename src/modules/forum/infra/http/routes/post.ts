@@ -1,12 +1,12 @@
-
-import express from 'express';
-import { middleware } from '../../../../../shared/infra/http';
 import { createPostController } from '../../../useCases/post/createPost';
-import { getRecentPostsController } from '../../../useCases/post/getRecentPosts';
-import { getPostBySlugController } from '../../../useCases/post/getPostBySlug';
-import { getPopularPostsController } from '../../../useCases/post/getPopularPosts';
-import { upvotePostController } from '../../../useCases/post/upvotePost';
 import { downvotePostController } from '../../../useCases/post/downvotePost';
+import express from 'express';
+import { getFiveMostPopularPostsController } from '../../../useCases/post/getFiveMostPopularPosts';
+import { getPopularPostsController } from '../../../useCases/post/getPopularPosts';
+import { getPostBySlugController } from '../../../useCases/post/getPostBySlug';
+import { getRecentPostsController } from '../../../useCases/post/getRecentPosts';
+import { middleware } from '../../../../../shared/infra/http';
+import { upvotePostController } from '../../../useCases/post/upvotePost';
 
 const postRouter = express.Router();
 
@@ -23,6 +23,11 @@ postRouter.get('/recent',
 postRouter.get('/popular',
   middleware.includeDecodedTokenIfExists(),
   (req, res) => getPopularPostsController.execute(req, res)
+)
+
+postRouter.get('/popular/five',
+  middleware.includeDecodedTokenIfExists(),
+  (req, res) => getFiveMostPopularPostsController.execute(req, res)
 )
 
 postRouter.get('/',

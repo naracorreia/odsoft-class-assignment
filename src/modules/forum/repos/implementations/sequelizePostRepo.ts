@@ -96,7 +96,19 @@ export class PostRepo implements IPostRepo {
   public async getPopularPosts (offset?: number): Promise<PostDetails[]> {
     const PostModel = this.models.Post;
     const detailsQuery = this.createBaseDetailsQuery();
-    detailsQuery.offset = offset ? offset : detailsQuery.offset;
+    detailsQuery.offset = parseInt(offset.toString()) ? parseInt(offset.toString()) : detailsQuery.offset;
+    detailsQuery['order'] = [
+      ['points', 'DESC'],
+    ];
+
+    const posts = await PostModel.findAll(detailsQuery);
+    return posts.map((p) => PostDetailsMap.toDomain(p))
+  }
+
+  public async getFiveMostPopularPosts (limit?: number): Promise<PostDetails[]> {
+    const PostModel = this.models.Post;
+    const detailsQuery = this.createBaseDetailsQuery();
+    detailsQuery.limit = parseInt(limit.toString()) ? parseInt(limit.toString()) : detailsQuery.limit;
     detailsQuery['order'] = [
       ['points', 'DESC'],
     ];

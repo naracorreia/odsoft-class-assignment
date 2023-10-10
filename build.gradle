@@ -15,3 +15,71 @@ task buildNodeApp(type: NpxTask) {
     args = ['tsc']
 }
 
+task docsGeneration(type: NodeTask) {
+    dependsOn buildNodeApp
+    script = file('node_modules/jsdoc/jsdoc.js')
+    args = [
+        '--configure', 'jsdoc.json', // Specify the path to your JSDoc configuration file
+        //'src/**/*.ts', // Adjust this to match the location of your JavaScript or TypeScript files
+        //'--destination', 'docs/' // Specify the destination directory for the generated documentation
+    ]
+}
+
+task runUnitTests(type: NpxTask) {
+  dependsOn buildNodeApp
+  command = 'npx'
+  //script = file('./package.json')
+  args = ['jest', '--testRegex="./src/.*\\.spec.ts$"']
+
+}
+
+task generateUnitTestsCoverageReport(type: NpxTask) {
+  dependsOn buildNodeApp
+  command = 'npx'
+  args = ['jest --testRegex="./src/.*\\.spec.ts$" --coverage --coverageReporters=\"text\" --coverageReporters=\"html\" --coverageReporters=\"json\"']
+  //args = ['run', 'testWithCoverage']
+
+}
+
+task startApplication(type: NpxTask) {
+  dependsOn buildNodeApp
+  command = 'npx'
+  args = ['cross-env NODE_ENV=development node scripts/db/create']
+  args = ['cross-env NODE_ENV=development dotenv -e .env sequelize db:migrate']
+}
+
+//npm install && npm run db:create:dev && npm run migrate:dev && cd public/app && npm install
+
+task deleteAndCreateDatabase(type: NpxTask) {
+  dependsOn buildNodeApp
+  command = 'npx'
+  args = ['cross-env NODE_ENV=development node scripts/db/delete']
+  args = ['cross-env NODE_ENV=development node scripts/db/create']
+}
+
+task migrateDatabase(type: NpxTask) {
+  dependsOn buildNodeApp
+  command = 'npx'
+  args = ['cross-env NODE_ENV=development dotenv -e .env sequelize db:migrate']
+}
+
+task runAPITests(type: NpxTask) {
+  dependsOn deleteAndCreateDatabase
+  dependsOn migrateDatabase
+  command = 'npx'
+  //script = file('./package.json')
+  args = ['jest --coverage --coverageReporters=\"html\" --runInBand --testPathPattern=api']
+
+}
+
+
+
+
+/*task generateAPITestsCoverageReport(type: NpxTask) {
+  dependsOn buildNodeApp
+  command = 'npm'
+  //script = file('./package.json')
+  args = ['run', 'testWithCoverage:api']
+
+}*/
+

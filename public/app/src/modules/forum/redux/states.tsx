@@ -1,6 +1,5 @@
-
-import { Post } from "../models/Post";
 import { Comment } from "../models/Comment";
+import { Post } from "../models/Post";
 
 export interface ForumState {
   isSubmittingPost: boolean;
@@ -26,6 +25,10 @@ export interface ForumState {
   isGettingPopularPosts: boolean;
   isGettingPopularPostsSuccess: boolean;
   isGettingPopularPostsFailure: boolean;
+
+  isGettingFiveMostPopularPosts: boolean;
+  isGettingFiveMostPopularPostsSuccess: boolean;
+  isGettingFiveMostPopularPostsFailure: boolean;
 
   isGettingCommentByCommentId: boolean;
   isGettingCommentByCommentIdSuccess: boolean;
@@ -87,6 +90,10 @@ const initialForumState: ForumState = {
   isGettingPopularPosts: false,
   isGettingPopularPostsSuccess: false,
   isGettingPopularPostsFailure: false,
+
+  isGettingFiveMostPopularPosts: false,
+  isGettingFiveMostPopularPostsSuccess: false,
+  isGettingFiveMostPopularPostsFailure: false,
 
   isGettingCommentByCommentId: false,
   isGettingCommentByCommentIdSuccess: false,
