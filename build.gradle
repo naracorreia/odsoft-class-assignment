@@ -41,6 +41,7 @@ task generateUnitTestsCoverageReport(type: NpxTask) {
 
 }
 
+// npm run setup:dev
 task createAndMigrateDatabase(type: NpxTask) {
   dependsOn buildNodeApp
   command = 'npx'
@@ -48,6 +49,7 @@ task createAndMigrateDatabase(type: NpxTask) {
   args = ['cross-env NODE_ENV=development dotenv -e .env sequelize db:migrate']
 }
 
+// npm run setup:dev
 task setUpApplication(type: NpxTask) {
   dependsOn buildNodeApp
   dependsOn createAndMigrateDatabase
@@ -66,22 +68,29 @@ task setUpApplication(type: NpxTask) {
 // workingDir = file('public/app')
 //npm install && npm run db:create:dev && npm run migrate:dev && cd public/app && npm install
 
-task deleteAndCreateDatabase(type: NpxTask) {
-  dependsOn buildNodeApp
+// npm run start:both (only backend)
+
+task deleteDatabase(type: NpxTask) {
   command = 'npx'
   args = ['cross-env NODE_ENV=development node scripts/db/delete']
+
+}
+
+task createDatabase(type: NpxTask) {
+  dependsOn deleteDatabase
+  command = 'npx'
   args = ['cross-env NODE_ENV=development node scripts/db/create']
 }
 
+// npm run start:both (only backend)
 task migrateDatabase(type: NpxTask) {
-  dependsOn buildNodeApp
-  dependsOn deleteAndCreateDatabase
+  //dependsOn buildNodeApp
+  dependsOn createDatabase
   command = 'npx'
   args = ['cross-env NODE_ENV=development dotenv -e .env sequelize db:migrate']
 }
 
 task runAPITests(type: NpxTask) {
-  dependsOn deleteAndCreateDatabase
   dependsOn migrateDatabase
   command = 'npx'
   //script = file('./package.json')
