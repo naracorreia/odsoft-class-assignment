@@ -1,15 +1,14 @@
-
 import { Mapper } from "../../../shared/infra/Mapper";
-import { PostDetails } from "../domain/postDetails";
-import { PostDTO } from "../dtos/postDTO";
-import { PostSlug } from "../domain/postSlug";
-import { PostTitle } from "../domain/postTitle";
 import { MemberDetailsMap } from "./memberDetailsMap";
-import { PostType } from "../domain/postType";
-import { PostText } from "../domain/postText";
+import { PostDTO } from "../dtos/postDTO";
+import { PostDetails } from "../domain/postDetails";
 import { PostLink } from "../domain/postLink";
-import { PostVoteMap } from "./postVoteMap";
+import { PostSlug } from "../domain/postSlug";
+import { PostText } from "../domain/postText";
+import { PostTitle } from "../domain/postTitle";
+import { PostType } from "../domain/postType";
 import { PostVote } from "../domain/postVote";
+import { PostVoteMap } from "./postVoteMap";
 
 export class PostDetailsMap implements Mapper<PostDetails> {
 
@@ -27,7 +26,7 @@ export class PostDetailsMap implements Mapper<PostDetails> {
       title,
       type: raw.type,
       points: raw.points,
-      numComments: raw.total_num_comments,
+      numComments: raw.hasOwnProperty('num_first_comments') ? raw.num_first_comments : raw.total_num_comments,
       dateTimePosted: raw.createdAt,
       member: memberDetails,
       text: postType === 'text' ? PostText.create({ value: raw.text }).getValue() : null,

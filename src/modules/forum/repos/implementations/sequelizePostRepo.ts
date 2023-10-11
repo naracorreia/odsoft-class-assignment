@@ -10,6 +10,7 @@ import { IPostVotesRepo } from "../postVotesRepo";
 import { PostVotes } from "../../domain/postVotes";
 import { MemberId } from "../../domain/memberId";
 import { Comments } from "../../domain/comments";
+import { PostType } from "../../domain/postType";
 
 export class PostRepo implements IPostRepo {
 
@@ -89,14 +90,37 @@ export class PostRepo implements IPostRepo {
     const detailsQuery = this.createBaseDetailsQuery();
     detailsQuery.offset = offset ? offset : detailsQuery.offset;
     
+    const result = await this.models.sequelize.query(
+      `SELECT
+          P.*,
+          COALESCE(C.count, 0) AS num_first_comments
+      FROM
+          post AS P
+      LEFT JOIN (
+          SELECT
+              post_id,
+              COUNT(*) AS count
+          FROM
+              comment
+          WHERE
+              parent_comment_id IS NULL
+          GROUP BY
+              post_id
+      ) AS C
+      ON P.post_id = C.post_id;`
+
+    );
+    //const posts = await PostModel.findAll(detailsQuery);
+    console.log(result[0][0])
     const posts = await PostModel.findAll(detailsQuery);
-    return posts.map((p) => PostDetailsMap.toDomain(p))
+    return posts.map((p) => PostDetailsMap.toDomain(p));
   }
 
   public async getPopularPosts (offset?: number): Promise<PostDetails[]> {
     const PostModel = this.models.Post;
     const detailsQuery = this.createBaseDetailsQuery();
-    detailsQuery.offset = parseInt(offset.toString()) ? parseInt(offset.toString()) : detailsQuery.offset;
+    //detailsQuery.offset = parseInt(offset.toString()) ? parseInt(offset.toString()) : detailsQuery.offset;
+    detailsQuery.offset = offset ? offset : detailsQuery.offset;
     detailsQuery['order'] = [
       ['points', 'DESC'],
     ];

@@ -41,13 +41,29 @@ task generateUnitTestsCoverageReport(type: NpxTask) {
 
 }
 
-task startApplication(type: NpxTask) {
+task createAndMigrateDatabase(type: NpxTask) {
   dependsOn buildNodeApp
   command = 'npx'
   args = ['cross-env NODE_ENV=development node scripts/db/create']
   args = ['cross-env NODE_ENV=development dotenv -e .env sequelize db:migrate']
 }
 
+task setUpApplication(type: NpxTask) {
+  dependsOn buildNodeApp
+  dependsOn createAndMigrateDatabase
+  workingDir = file('public/app')
+  command = 'npm'
+  args = ['install']
+  
+}
+
+/*task startApplication(type: NpxTask) {
+  dependsOn setUpApplication
+  command = 'npx'
+  args = ['cross-env NODE_ENV=development nodemon']
+}*/
+
+// workingDir = file('public/app')
 //npm install && npm run db:create:dev && npm run migrate:dev && cd public/app && npm install
 
 task deleteAndCreateDatabase(type: NpxTask) {
@@ -59,6 +75,7 @@ task deleteAndCreateDatabase(type: NpxTask) {
 
 task migrateDatabase(type: NpxTask) {
   dependsOn buildNodeApp
+  dependsOn deleteAndCreateDatabase
   command = 'npx'
   args = ['cross-env NODE_ENV=development dotenv -e .env sequelize db:migrate']
 }
