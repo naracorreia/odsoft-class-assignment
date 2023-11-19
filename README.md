@@ -17,7 +17,7 @@
 
 ## About 
 
-DDDForum.com is the application that we build in [solidbook.io - The Software Design and Architecture Handbook](https://solidbook.io). 
+DDDForum.com is the application that we build in [solidbook.io - The Software Design and Architecture Handbook](https://solidbook.io).  
 
 ## Team's Project Technical Documentation  
 
